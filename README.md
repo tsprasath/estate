@@ -4,7 +4,7 @@ Estate (Terraform UX)
 
 **Latin:** Status **Old French:** estat **English:** Esate
 
-> a piece of landed property or status of an owner, considered with respect to property, especially one of large extent with an elaborate house on it
+> a piece of landed property or status of an owner, with respect to property, especially one of large extent with an elaborate house on it
 
 Estate is essentially at Terraform UI/UX experiance that makes Terraform easier for everyone to use.
 
@@ -24,9 +24,9 @@ The slides for the presentation can be found [here](http://slides.com/rocktaviou
 Getting Started & Bootstraping
 ------------------------------
 
-(Only for AWS Users) There is a Terraform file in the root of the repository that will provision the necessary AWS resources to run Estate
+(Only for AWS Users) There is a set of Terraform files in the bootstrap folder in the root of the repository that will provision the necessary AWS resources to run Estate in a production like manner
 
-For those who arn't using AWS or have their own deployment tooling as long as it can run a docker container then you can stand this puppy up.
+For those who arn't using AWS or have their own deployment tooling as long as it can run a docker container then you can stand this up.
 
 ```
 docker pull underarmourconnectedfitness/estate:master
@@ -56,6 +56,7 @@ The main environment variables that Estate will pickup are as follows:
 * **TERRAFORM_INIT_EXTRA_ARGS**: Extra commandline arguments that will be applied only the `terraform init` command (Default ``)
 * **TERRAFORM_PLAN_EXTRA_ARGS**: Extra commandline arguments that will be applied only to the `terraform plan` command (Default: `-detailed-exitcode -out=plan`)
 * **TERRAFORM_APPLY_EXTRA_ARGS**: Extra commandline arguments that will be applied only to the `terraform apply` command (Default: ``)
+* **TERRAFORM_ELASTICACHE_URL**: If using a clustered setup and AWS Elasticache then you can configure the elasticache url
 
 The following can only be applied as environment variables
 

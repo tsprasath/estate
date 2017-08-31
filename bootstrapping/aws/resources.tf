@@ -118,6 +118,7 @@ data "user_data" "estate" {
 
   vars {
     db_url = "postgres://${var.db_user}:${var.db_password}@${aws_db_instance.estate.endpoint}/estate"
+    cache_url = ""
   }
 }
 

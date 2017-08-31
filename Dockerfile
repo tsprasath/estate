@@ -7,7 +7,7 @@ ENV DJANGO_SETTINGS_MODULE=estate.settings \
     PATH=/usr/local/service/node_modules/.bin/:$PATH
 
 RUN yum update -y && \
-    yum install -y ca-certificates gcc libffi-devel libyaml-devel postgresql94-devel python27-devel python27-pip unzip docker git && \
+    yum install -y ca-certificates gcc libffi-devel libyaml-devel libmemcached-devel zlib-devel postgresql94-devel python27-devel python27-pip unzip docker git && \
     mkdir -p /usr/local/service
 
 COPY ./TERRAFORM_URL.txt /usr/local/service/TERRAFORM_URL.txt
@@ -27,6 +27,7 @@ RUN pip install coreapi==2.3.0 \
                 django-braces==1.11.0 \
                 django-crispy-forms==1.6.1 \
                 django-cors-headers==2.0.2 \
+                django-elasticache==1.0.3 \
                 django-extensions==1.7.8 \
                 django-filter==1.0.2 \
                 django-permanent==1.1.6 \

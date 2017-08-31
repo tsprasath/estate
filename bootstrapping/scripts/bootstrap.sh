@@ -25,7 +25,7 @@ sysctl -p
 cat << EOF > /usr/local/estate.conf
 SECRET_KEY=$(awsget ../dynamic/instance-identity/document | jq -r '.accountId')
 DATABASE_URL=${db_url}
-TERRAFORM_CACHE_URL=${cache_url}
+TERRAFORM_ELASTICACHE_URL=${cache_url}
 EOF
 
 cat << EOF > /etc/supervisord2.conf

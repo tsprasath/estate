@@ -1,5 +1,4 @@
 import ast
-import json
 import os
 import dj_database_url
 
@@ -68,19 +67,28 @@ DATABASES = {
     'default': dj_database_url.config(default='sqlite:///%s/database.sqlite' % PROJECT_ROOT)
 }
 
-DEFAULT_CACHES = """
-{
-    "default": {
-        "BACKEND": "django.core.cache.backends.dummy.DummyCache"
-    },
-    "terraform": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "/tmp/django_cache_terraform"
-    }
-}
-"""
+TERRAFORM_ELASTICACHE_URL = os.environ.get("TERRAFORM_ELASTICACHE_URL")
 
-CACHES = json.loads(os.environ.get("CACHES", DEFAULT_CACHES))
+if TERRAFORM_ELASTICACHE_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache"
+        },
+        "terraform": {
+            "BACKEND": "django_elasticache.memcached.ElastiCache",
+            "LOCATION": TERRAFORM_ELASTICACHE_URL,
+        }
+    }
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache"
+        },
+        "terraform": {
+            "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+            "LOCATION": "/tmp/django_cache_terraform"
+        }
+    }
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')

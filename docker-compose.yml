@@ -8,7 +8,7 @@ service:
   volumes:
     - $PWD/estate:/usr/local/service/estate
     - $PWD/webpack:/usr/local/service/webpack
-    - $PWD/local.sh:/usr/bin/local
+    - $PWD/scripts/local.sh:/usr/bin/local
     - /var/run/docker.sock:/var/run/docker.sock
     - /tmp:/tmp
   environment:
