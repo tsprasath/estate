@@ -1,0 +1,115 @@
+/*
+Dashboard
+*/
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+ /* Hide default border to remove 1px line.*/
+.navbar-fixed-top {
+  border: 0;
+}
+
+/* Hide for mobile, show later */
+.sidebar {
+  position: fixed;
+  height: 100%;
+  display: block;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+}
+.sidebar .btn,
+.sidebar > a {
+  padding: 0px;
+  margin: 5px 0;
+}
+.sidebar > .nav > li > * {
+  padding: 0px;
+  display: inline-table;
+}
+
+.nav-sidebar-header {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.main {
+  padding: 20px;
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+/*
+CodeMirror
+*/
+.CodeMirror {
+  height: auto;
+  outline: 1px solid grey;
+  z-index: 0;
+}
+.CodeMirror-scroll {
+  min-height: 6em;
+}
+
+.btn-inline {
+  margin-right: 5px;
+}
+
+/*
+accordion
+*/
+#accordion .panel-heading:hover {
+    cursor: pointer;
+}
+
+#accordion .panel-heading:before {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+}
+#accordion .panel-heading.collapsed:before {
+    content:"\e080";
+}
+
+/*
+Animations
+*/
+.flashing {
+  animation: blinker 0.8s linear infinite;
+}
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+.spinning {
+    animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+/*
+ReactTooltip
+*/
+.ReactTooltipHoverDelay {
+  font-size: 12px !important;
+  pointer-events: auto !important;
+}
+.ReactTooltipHoverDelay:hover {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

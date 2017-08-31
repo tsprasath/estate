@@ -99,3 +99,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Mac OSX
+.DS_Store
+
+# Project Specific
+webpack-stats.json
+reports
+local.py

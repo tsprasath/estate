@@ -1,0 +1,42 @@
+service:
+  build: .
+  dockerfile: Dockerfile
+  command: local
+  ports:
+    - 8000:8000
+    - 3000:3000
+  volumes:
+    - $PWD/estate:/usr/local/service/estate
+    - $PWD/webpack:/usr/local/service/webpack
+    - $PWD/local.sh:/usr/bin/local
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /tmp:/tmp
+  environment:
+    - "DEBUG=True"
+    - "DATABASE_URL=postgres://postgres:estate@postgres:5432/estate"
+  links:
+    - postgres:postgres
+    - consul:consul
+    - vault:vault
+
+postgres:
+  image: postgres:9.5
+  environment:
+    - "POSTGRES_PASSWORD=estate"
+    - "POSTGRES_DB=estate"
+
+consul:
+  image: consul:0.9.0
+  ports:
+    - 8500:8500
+
+vault:
+  image: vault:0.7.3
+  environment:
+    - "VAULT_DEV_ROOT_TOKEN_ID=estate"
+    - "VAULT_TOKEN=estate"
+    - "VAULT_ADDR=http://127.0.0.1:8200"
+  cap_add:
+    - IPC_LOCK
+  ports:
+    - 8200:8200
