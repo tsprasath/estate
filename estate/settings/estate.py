@@ -13,5 +13,4 @@ TERRAFORM_APPLY_EXTRA_ARGS = os.environ.get("TERRAFORM_APPLY_EXTRA_ARGS", "")
 INSTALLED_APPS += [
     "estate.core",
     "estate.terraform",
-    "estate.nomad",
 ]
